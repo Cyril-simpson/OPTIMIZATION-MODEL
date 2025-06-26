@@ -1,0 +1,17 @@
+from pulp import LpMaximize, LpProblem, LpVariable, value
+
+model = LpProblem(name="maximize_furniture_profit", sense=LpMaximize)
+
+tables = LpVariable(name="Tables", lowBound=0, cat="Integer")
+chairs = LpVariable(name="Chairs", lowBound=0, cat="Integer")
+
+model += 250 * tables + 150 * chairs, "Total_Profit"
+model += (4 * tables + 3 * chairs <= 40), "Wood_Constraint"
+model += (6 * tables + 3 * chairs <= 60), "Labor_Constraint"
+
+model.solve()
+
+print(f"Status: {model.status}, {model.solver.status}")
+print(f"Optimal number of Tables to produce: {tables.varValue}")
+print(f"Optimal number of Chairs to produce: {chairs.varValue}")
+print(f"Maximum Profit: ₹{value(model.objective)}")
