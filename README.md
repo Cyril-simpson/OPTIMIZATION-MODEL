@@ -13,10 +13,8 @@
 *MENTOR*: NEELA SANTHOSH
 
 *OUTPUT*:
+
 Status: 1, Optimal
-
 Optimal number of Tables to produce: 6.0
-
 Optimal number of Chairs to produce: 0.0
-
 Maximum Profit: ₹1500.0
